@@ -1,0 +1,48 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "MainFight",
+                "projectName": "MainFight",
+                "workingDirectory": "/home/smsthn/Documents/Java/DragonFightFrst/MainFight",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "DragonFightFrst",
+                "projectName": "DragonFightFrst",
+                "workingDirectory": "/home/smsthn/Documents/Java/DragonFightFrst",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "MainFight",
+                "projectName": "MainFight",
+                "workingDirectory": "/home/smsthn/Documents/Java/DragonFightFrst/MainFight",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            },
+            {
+                "name": "DragonFightFrst",
+                "projectName": "DragonFightFrst",
+                "workingDirectory": "/home/smsthn/Documents/Java/DragonFightFrst",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dragonfight.WeaponsTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-08-25T11:08:36" hostname="3Azzoz" time="0.524">
+  <properties/>
+  <testcase name="checkDuplicate()" classname="com.dragonfight.WeaponsTest" time="0.452"/>
+  <testcase name="checkSword()" classname="com.dragonfight.WeaponsTest" time="0.056"/>
+  <testcase name="checkSword2()" classname="com.dragonfight.WeaponsTest" time="0.003"/>
+  <testcase name="WeaponNotNull()" classname="com.dragonfight.WeaponsTest" time="0.002"/>
+  <testcase name="CheckArrow()" classname="com.dragonfight.WeaponsTest" time="0.002"/>
+  <testcase name="checkDeleted()" classname="com.dragonfight.WeaponsTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

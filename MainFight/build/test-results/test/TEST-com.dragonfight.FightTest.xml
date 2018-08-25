@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dragonfight.FightTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-08-25T11:08:37" hostname="3Azzoz" time="0.044">
+  <properties/>
+  <testcase name="checkArena()" classname="com.dragonfight.FightTest" time="0.036"/>
+  <testcase name="checkEmpty()" classname="com.dragonfight.FightTest" time="0.003"/>
+  <testcase name="CheckWalls()" classname="com.dragonfight.FightTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

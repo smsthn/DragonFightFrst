@@ -1,0 +1,6 @@
+println(project.name)
+
+println('The Main Fight Project Has Been Initialized')
+
+println(parent)
+

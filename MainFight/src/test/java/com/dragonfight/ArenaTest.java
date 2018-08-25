@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.dragonfight.Arena.Arena;
+import com.dragonfight.Arena.ArenaFactory;
 import com.dragonfight.Arena.Rules;
 import com.dragonfight.Character.CharacterFactory;
 import com.dragonfight.Character.CharacterType;
@@ -26,8 +27,7 @@ public class ArenaTest{
 
     @BeforeEach
     public void setUp(){
-        mArena = new Arena(25, 25);
-        mArena.initializeAreana(new Rules().getRules());
+        mArena = ArenaFactory.CreateArena(20, 20);
         mPlayer = CharacterFactory.createPlayer("Massoud", 500);
         mDragon = CharacterFactory.createCharacter("Dragon", 700, CharacterType.Enemy);
         mPlayer.setCurrentEnemy(mDragon);

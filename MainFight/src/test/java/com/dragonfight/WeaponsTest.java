@@ -1,6 +1,8 @@
 package com.dragonfight;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -33,12 +35,12 @@ import org.mockito.Mockito;
 
 import javafx.beans.binding.When;
 
-public class WeaponsTest{
+public class WeaponsTest {
     private static ICharacter character1;
     private static ICharacter character2;
     private static IWeapon sword;
-    private  static IWeapon arrow;
-    private  static IWeapon fire;
+    private static IWeapon arrow;
+    private static IWeapon fire;
 
     ICell cell1;
     ICell cell2;
@@ -46,23 +48,23 @@ public class WeaponsTest{
     private Arena arena;
 
     @BeforeAll
-    public static void setUp1(){
-     
+    public static void setUp1() {
+
     }
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         character1 = CharacterFactory.createPlayer("Massoud", 500);
-        character2 = CharacterFactory.createCharacter("Char", 500,CharacterType.Enemy);
+        character2 = CharacterFactory.createCharacter("Char", 500, CharacterType.Enemy);
         character1.setCurrentEnemy(character2);
 
         sword = WeaponFactory.createAndAttachWeapon(character1, WeaponType.Sword);
         arrow = WeaponFactory.createAndAttachWeapon(character1, WeaponType.Arrow);
-        fire =  WeaponFactory.createAndAttachWeapon(character2, WeaponType.Fire);
+        fire = WeaponFactory.createAndAttachWeapon(character2, WeaponType.Fire);
 
-        cell1 = Mockito.mock(ICell.class,Mockito.RETURNS_DEEP_STUBS);
-        cell2 = Mockito.mock(ICell.class,Mockito.RETURNS_DEEP_STUBS);
-        
+        cell1 = Mockito.mock(ICell.class, Mockito.RETURNS_DEEP_STUBS);
+        cell2 = Mockito.mock(ICell.class, Mockito.RETURNS_DEEP_STUBS);
+
         Mockito.when(cell1.getType()).thenReturn(CellType.Empty);
         Mockito.when(cell2.getType()).thenReturn(CellType.Empty);
         character1.setCell(cell1);
@@ -74,69 +76,92 @@ public class WeaponsTest{
     }
 
     @Test
-    public void WeaponNotNull(){
-        //assertNotNull(sword);
-        //assertNotNull(arrow);
+    public void WeaponNotNull() {
+        assertNull(sword);
+        assertNull(arrow);
         assertNotNull(fire);
-        
-        //assertTrue(character2.getAllWeapons().isEmpty(),character2.getAllWeapons().get(0).getName());
+
+        // assertTrue(character2.getAllWeapons().isEmpty(),character2.getAllWeapons().get(0).getName());
     }
+
     @Test
-    public void checkDuplicate(){
+    public void checkDuplicate() {
         IWeapon wpn = WeaponFactory.createAndAttachWeapon(character1, WeaponType.Sword);
         assertNull(wpn);
     }
 
     @Test
-    public void checkDeleted(){
+    public void checkDeleted() {
         WeaponFactory.removeAndDetachWeapon(fire);
         assertNull(WeaponFactory.removeAndDetachWeapon(fire));
     }
 
     @Test
-    public void checkSword(){
-        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5,1));
-        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5,15));
+    public void checkSword() {
+        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5, 1));
+        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5, 15));
         IWeapon sword = character1.getWeapon("Sword");
         assertNotNull(sword);
         assertNotNull(character1.getCell());
         assertFalse(sword.Condition());
     }
+
     @Test
-    
-    public void checkSword2(){
-        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5,1));
-        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5,3));
+
+    public void checkSword2() {
+        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5, 1));
+        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5, 3));
         IWeapon sword = character1.getWeapon("Sword");
         assertNotNull(sword);
         assertNotNull(character1.getCell());
         assertTrue(sword.Condition());
     }
+
     @Test
-    
-    public void CheckArrow(){
+
+    public void CheckArrow() {
         for (MsLocation[] loc : data()) {
-            
-        
-        Mockito.when(cell1.getLocation()).thenReturn(loc[0]);
-        Mockito.when(cell2.getLocation()).thenReturn(loc[1]);
-        IWeapon arrow = character1.getWeapon("Arrow");
-        assertNotNull(arrow);
-        assertNotNull(character1.getCell());
-        assertTrue(arrow.Condition());
+
+            Mockito.when(cell1.getLocation()).thenReturn(loc[0]);
+            Mockito.when(cell2.getLocation()).thenReturn(loc[1]);
+            IWeapon arrow = character1.getWeapon("Arrow");
+            assertNotNull(arrow);
+            assertNotNull(character1.getCell());
+            assertTrue(arrow.Condition());
+        }
     }
-    }
-    private static List<MsLocation[]> data(){
-        List<MsLocation[]> loc = Arrays.asList(new MsLocation[][]{
-            {new MsLocation(1, 5),new MsLocation(5, 10)},
-            {new MsLocation(8, 3),new MsLocation(8, 3)},
-            {new MsLocation(6, 13),new MsLocation(8, 3)},
-            {new MsLocation(8, 3),new MsLocation(1, 20)},
-            {new MsLocation(2, 18),new MsLocation(2, 18)},
-            {new MsLocation(0, 11),new MsLocation(8, 3)},
-            {new MsLocation(8, 3),new MsLocation(5, 10)},
-        });
+
+    private static List<MsLocation[]> data() {
+        List<MsLocation[]> loc = Arrays.asList(new MsLocation[][] { { new MsLocation(1, 5), new MsLocation(5, 10) },
+                { new MsLocation(8, 3), new MsLocation(8, 3) }, { new MsLocation(6, 13), new MsLocation(8, 3) },
+                { new MsLocation(8, 3), new MsLocation(1, 20) }, { new MsLocation(2, 18), new MsLocation(2, 18) },
+                { new MsLocation(0, 11), new MsLocation(8, 3) }, { new MsLocation(8, 3), new MsLocation(5, 10) }, });
         return loc;
     }
-    
+
+    @Test
+    public void CheckAttack() {
+        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5, 1));
+        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5, 10));
+        int hp1 = character2.getHp();
+        character1.attack(character1.getWeapon("Sword"));
+        int hp2 = character2.getHp();
+        if (character1.getWeapon("Sword").Condition()) {
+            assertTrue(hp1 > hp2);
+        } else {
+            assertEquals(hp1, hp1);
+        }
+    }
+
+    @Test
+    public void checkEnemyAttack(){
+        Mockito.when(cell1.getLocation()).thenReturn(new MsLocation(5, 1));
+        Mockito.when(cell2.getLocation()).thenReturn(new MsLocation(5, 10));
+        character2.setCurrentEnemy(character1);
+        int hp1 = character1.getHp();
+        character2.attack(character2.getWeapon("Fire"));
+        int hp2 = character1.getHp();
+        assertTrue(hp1 > hp2);
+    }
+
 }

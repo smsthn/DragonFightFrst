@@ -10,9 +10,9 @@ public class Rules{
     private Map<CellType,List<IRule>> rules;
     private IRule SurroundWithWalls = (cell)->{
         boolean x1 = cell.getLocation().getX() == 0;
-        boolean x2 = cell.getLocation().getX() == cell.getArena().getWidth();
+        boolean x2 = cell.getLocation().getX() == cell.getArena().getWidth()-1;
         boolean y1 = cell.getLocation().getY() == 0;
-        boolean y2 = cell.getLocation().getY() == cell.getArena().getHeight();
+        boolean y2 = cell.getLocation().getY() == cell.getArena().getHeight()-1;
         return x1||x2||y1||y2;
     };
     public Rules(){

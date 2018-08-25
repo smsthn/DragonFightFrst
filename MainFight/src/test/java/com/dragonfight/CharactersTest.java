@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.dragonfight.Arena.Arena;
+import com.dragonfight.Arena.ArenaFactory;
 import com.dragonfight.Arena.Rules;
 import com.dragonfight.Character.CharacterFactory;
 import com.dragonfight.Character.ICharacter;
@@ -20,8 +21,7 @@ public class CharactersTest{
 
     @BeforeAll
     public static void setUp(){
-        arena = new Arena(50,50);
-        arena.initializeAreana(new Rules().getRules());
+        arena = ArenaFactory.CreateArena(20, 20);
     }
     @BeforeEach
     public void setUp2(){

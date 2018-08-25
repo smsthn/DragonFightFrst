@@ -91,7 +91,7 @@ public class Character implements ICharacter {
 
 	@Override
 	public void takeDamage(int takeDamage) {
-		mData.hp = takeDamage;
+		mData.hp -= takeDamage;
 	}
 
 	@Override
@@ -170,9 +170,15 @@ public class Character implements ICharacter {
 
 	@Override
 	public void attack(IWeapon weapon) {
-
+		if(getCurrentEnemy() == null)return;
+		getCurrentEnemy().takeDamage(weapon.getDamage());
 	}
 
+	@Override
+	public void attack(IWeapon weapon,ICharacter enemy) {
+		enemy.takeDamage(weapon.getDamage());
+	}
+	
 	@Override
 	public ICharacter getCurrentEnemy() {
 		return mData.currentEnemy;

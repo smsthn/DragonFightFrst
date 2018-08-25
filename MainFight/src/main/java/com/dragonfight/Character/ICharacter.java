@@ -42,6 +42,7 @@ public interface ICharacter{
     IWeapon removeWeapon(String name);
     IWeapon removeWeapon(IWeapon weapon);
     void attack(IWeapon weapon);
+    void attack(IWeapon weapon,ICharacter enemy);
 
     ICharacter getCurrentEnemy();
     ICharacter setCurrentEnemy(ICharacter enemy);

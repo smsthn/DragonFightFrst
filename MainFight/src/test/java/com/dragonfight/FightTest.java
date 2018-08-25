@@ -2,11 +2,13 @@ package com.dragonfight;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.util.List;
 
 import com.dragonfight.Arena.Arena;
+import com.dragonfight.Arena.ArenaFactory;
 import com.dragonfight.Arena.CellType;
 import com.dragonfight.Arena.ICell;
 import com.dragonfight.Arena.IRule;
@@ -22,18 +24,16 @@ import org.mockito.Mock;
 public class FightTest {
     static Arena arena;
 
-
     @BeforeAll
     public static void setUp() {
 
-        arena = new Arena(15, 15);
+        arena = ArenaFactory.CreateArena(20, 20);
 
     }
 
     @Test
     @DisplayName("Check Arena")
     public void checkArena() {
-        arena.initializeAreana(null);
         for (int y = 0; y < arena.getHeight(); y++) {
             for (int x = 0; x < arena.getWidth(); x++) {
                 assertNotNull(arena.cellAt(new MsLocation(x, y)), "Cell (" + x + "," + y + ") was Empty");
@@ -43,22 +43,22 @@ public class FightTest {
 
     @Test
     public void checkEmpty() {
-        arena.initializeAreana(null);
         for (int y = 0; y < arena.getHeight(); y++) {
             for (int x = 0; x < arena.getWidth(); x++) {
+                if (x != 0 && x != 19 && y != 0 && y != 19) {
                 assertEquals(arena.cellAt(new MsLocation(x, y)).getType(), CellType.Empty);
+                }
             }
         }
     }
 
     @Test
     public void CheckWalls() {
-        Rules rules = new Rules();
-        arena.initializeAreana(rules.getRules());
         for (int y = 0; y < arena.getHeight(); y++) {
             for (int x = 0; x < arena.getWidth(); x++) {
-                if(((IRule)rules.getRules().values().toArray()[0]).check(arena.cellAt(new MsLocation(x,y)))){
-                assertEquals(arena.cellAt(new MsLocation(x, y)).getType(), CellType.StaticWall);
+                if (x == 0 || x == 19 || y == 0 || y == 19) {
+                    
+                    assertEquals(arena.cellAt(new MsLocation(x, y)).getType() , CellType.StaticWall);
                 }
             }
         }
